@@ -1,29 +1,32 @@
-"use client";
+"use client"
+
 import { useAuthContext } from "@/context/AuthContext";
 import { useState } from "react";
 
+
 const Register = () => {
-  const [kayit, setKayit] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+const[kayit,setKayit]=useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:""
+})
 
-  const{createUser,signUpProvider}=useAuthContext()
+const{createUser,signUpProvider}=useAuthContext()
 
-const stateDoldur =(e)=>{
-  setKayit({ ...kayit, [e.target.name]: e.target.value })
+const stateDoldur=(e)=>{
+ setKayit({ ...kayit, [e.target.name]: e.target.value });
+
 }
 
-const {email,password,firstName,lastName}=kayit
+const{email,password,firstName,lastName}=kayit
 
-    const gonder = (e) => {
-      const displayName = `${firstName} ${lastName}`;
-      e.preventDefault();
+  const gonder = (e) => {
+    const displayName = `${firstName} ${lastName}`;
+    e.preventDefault();
 
-      createUser(email, password, displayName);
-    };
+    createUser(email, password, displayName);
+  };
 
   return (
     <div className="relative h-screen w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -53,7 +56,6 @@ const {email,password,firstName,lastName}=kayit
                   required
                   placeholder=" "
                   onChange={stateDoldur}
-                  
                 />
                 <label htmlFor="floating_text">Last Name</label>
               </div>
